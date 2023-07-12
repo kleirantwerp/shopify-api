@@ -26,17 +26,15 @@ class PrivateApp extends Client {
    * @param array $opts
    *   Default options to set.
    */
-  public function __construct($shop_domain, $api_key, $password, $shared_secret, array $opts = []) {
+  public function __construct($shop_domain, $access_token, array $opts = []) {
     $this->shop_domain = $shop_domain;
-    $this->password = $password;
-    $this->shared_secret = $shared_secret;
-    $this->api_key = $api_key;
     $this->client_type = 'private';
 
     if (isset($opts['version'])) {
       $this->version = $opts['version'];
       unset($opts['version']);
     }
+    $opts['headers']['X-Shopify-Access-Token'] = $access_token;
 
     $opts['base_uri'] = $this->getApiUrl();
     $this->client = $this->getNewHttpClient($opts);

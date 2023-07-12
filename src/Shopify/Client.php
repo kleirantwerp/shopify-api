@@ -149,7 +149,7 @@ abstract class Client {
    *
    * @var string
    */
-  protected $version = '2020-01';
+  protected $version = '2023-07';
 
   /**
    * The GuzzleHttp Client.

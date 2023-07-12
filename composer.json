@@ -1,5 +1,5 @@
 {
-  "name": "kleirantwerp/shopify",
+  "name": "kleirantwerp/shopify-api",
   "description": "Shopify PHP SDK to interact with the Shopify API.",
   "require": {
   },
