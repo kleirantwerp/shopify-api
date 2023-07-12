@@ -816,6 +816,7 @@ abstract class Client {
    */
   public function createResource($resource, array $data = []) {
     $result = $this->post($resource, $data);
+    $result = get_mangled_object_vars($result);
     return reset($result);
   }
 
