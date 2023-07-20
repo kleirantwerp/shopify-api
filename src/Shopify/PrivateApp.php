@@ -24,6 +24,7 @@ class PrivateApp extends Client {
    */
   public function __construct($shop_domain, $access_token, array $opts = []) {
     $this->shop_domain = $shop_domain;
+    $this->access_token = $access_token;
     $this->client_type = 'private';
 
     if (isset($opts['version'])) {
