@@ -32,19 +32,14 @@ class PublicApp extends Client {
    *
    * @param string $shop_domain
    *   Shopify domain.
-   * @param string $api_key
-   *   Shopify API Key.
-   * @param string $password
-   *   Shopify API Password.
-   * @param string $shared_secret
-   *   Shopify API Shared Secret.
+   * @param string $access_token
+   *   Shopify Access token.
    * @param array $opts
    *   Default options to set.
    */
-  public function __construct($shop_domain, $api_key, $shared_secret, array $opts = []) {
+  public function __construct($shop_domain, $access_token, array $opts = []) {
     $this->shop_domain = $shop_domain;
-    $this->shared_secret = $shared_secret;
-    $this->api_key = $api_key;
+    $this->access_token = $access_token;
     $this->client_type = 'public';
 
     if (isset($opts['version'])) {
@@ -160,7 +155,7 @@ class PublicApp extends Client {
     unset($params['signature']);
     ksort($params);
     $data = http_build_query($params);
-    return ($original_hmac === $this->calculateHmac($data, $this->shared_secret));
+    return ($original_hmac === $this->calculateHmac($data, $this->access_token));
   }
 
   /**

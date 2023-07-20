@@ -15,14 +15,14 @@ class IncomingWebhook {
 
   private $hmac_header;
 
-  private $shared_secret;
+  private $access_token;
 
   /**
-   * @param string $shared_secret
-   *   Shopify shared secret key.
+   * @param string $access_token
+   *   Shopify Acces token
    */
-  public function __construct($shared_secret) {
-    $this->shared_secret = $shared_secret;
+  public function __construct($access_token) {
+    $this->access_token = $access_token;
   }
 
   /**
@@ -64,7 +64,7 @@ class IncomingWebhook {
     $this->data = $data;
     $this->hmac_header = $hmac_header;
 
-    if ($hmac_header !== $this->calculateHmac($this->data, $this->shared_secret)) {
+    if ($hmac_header !== $this->calculateHmac($this->data, $this->access_token)) {
       // Data or the hash are corrupt.
       throw new WebhookException('Invalid webhook.', 0, NULL, $data, $hmac_header);
     }

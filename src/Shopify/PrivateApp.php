@@ -17,12 +17,8 @@ class PrivateApp extends Client {
    *
    * @param string $shop_domain
    *   Shopify domain.
-   * @param string $api_key
-   *   Shopify API Key.
-   * @param string $password
-   *   Shopify API Password.
-   * @param string $shared_secret
-   *   Shopify API Shared Secret.
+   * @param string $access_token
+   *   Shopify Access token.
    * @param array $opts
    *   Default options to set.
    */

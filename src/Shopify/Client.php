@@ -132,7 +132,7 @@ abstract class Client {
    *
    * @var string
    */
-  protected $shared_secret;
+  protected $access_token;
 
   /**
    * The app API key.
@@ -620,7 +620,7 @@ abstract class Client {
    * @throws \Shopify\ClientException
    */
   public function getIncomingWebhook($validate = TRUE, $data = '', $hmac_header = '') {
-    $webhook = new IncomingWebhook($this->shared_secret);
+    $webhook = new IncomingWebhook($this->access_token);
     if ($validate) {
       try {
         $webhook->validate($data, $hmac_header);
